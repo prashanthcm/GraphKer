@@ -269,7 +269,7 @@ def replace_unwanted_string_capec(path):
     os.remove(file)
 
 def slice_json_file(input_file, output_path, output_prefix, batch_size, json_array_path):
-    with open(input_file, 'r') as f:
+    with open(input_file, 'r', encoding="utf8") as f:
         data = json.load(f)
 
     data_array = select_nested_array_by_path(data, json_array_path)

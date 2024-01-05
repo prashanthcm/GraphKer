@@ -22,15 +22,15 @@ class CVEInserter:
     # Cypher Query to insert CVE Cypher Script
     def query_cve_script(self, file):
         start_time = time.time()
-        cves_cypher_file = open(self.import_path + "CVEs.cypher", "r")
+        cves_cypher_file = open("CypherScripts/" + "CVEs.cypher", "r")
         query = cves_cypher_file.read()
         query = query.replace('cveFilesToImport', f"'{file}'")
 
         try:
             with self.driver.session() as session:
                 session.run(query)
-        except exceptions.CypherError as e:
-            print(f"CypherError: {e}")
+        except exceptions.CypherSyntaxError as e:
+            print(f"CypherSyntaxError: {e}")
         except exceptions.DriverError as e:
             print(f"DriverError: {e}")
         except Exception as e:

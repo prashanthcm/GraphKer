@@ -18,8 +18,8 @@ class DatabaseUtil:
             try:
                 with self.driver.session() as session:
                     session.run(query)
-            except exceptions.CypherError as e:
-                print(f"CypherError: {e}")
+            except exceptions.CypherSyntaxError as e:
+                print(f"CypherSyntaxError: {e}")
             print(f"{label} deleted successfuly")
 
         end_time = time.time()
@@ -38,8 +38,8 @@ class DatabaseUtil:
         try:
             with self.driver.session() as session:
                 session.run(query)
-        except exceptions.CypherError as e:
-            print(f"CypherError: {e}")
+        except exceptions.CypherSyntaxError as e:
+            print(f"CypherSyntaxError: {e}")
         end_time = time.time()
         print(f"\nPrevious Schema has been deleted {end_time - start_time}")
 
@@ -52,7 +52,7 @@ class DatabaseUtil:
         try:
             with self.driver.session() as session:
                 session.run(query)
-        except exceptions.CypherError as e:
-            print(f"CypherError: {e}")
+        except exceptions.CypherSyntaxError as e:
+            print(f"CypherSyntaxError: {e}")
         end_time = time.time()
         print(f"\nSchema with Constraints and Indexes insertion completed {end_time - start_time}")

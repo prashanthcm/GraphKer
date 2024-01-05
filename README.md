@@ -118,6 +118,8 @@ python main.py -u BOLT_URL -n USERNAME -p PASSWORD -d IMPORT_PATH -g y
 sudo python3 main.py -u BOLT_URL -n USERNAME -p PASSWORD -d /var/lib/neo4j/import/
 ``` 
 
+python main.py -u bolt://localhost:7687 -n neo4j -p root1234 -d "C:\Users\sagar\.Neo4jDesktop\relate-data\dbmss\dbms-e95403d0-d98b-4758-9deb-69f603c38cd2\import" -b y
+
 _Default Bolt URL for Neo4j: bolt://localhost:7687_
 
 _Default Username in Neo4j Databases: neo4j_

@@ -10,14 +10,14 @@ class CAPECInserter:
 
     # Cypher Query to insert CAPEC refrence Cypher Script
     def query_capec_reference_script(self, file):
-        capecs_cypher_file = open(self.import_path + "CAPECs_reference.cypher", "r")
+        capecs_cypher_file = open("CypherScripts/" + "CAPECs_reference.cypher", "r")
         query = capecs_cypher_file.read()
         query = query.replace('capecReferenceFilesToImport', f"'{file}'")
         try:
             with self.driver.session() as session:
                 session.run(query)
-        except exceptions.CypherError as e:
-            print(f"CypherError: {e}")
+        except exceptions.CypherSyntaxError as e:
+            print(f"CypherSyntaxError: {e}")
         except exceptions.DriverError as e:
             print(f"DriverError: {e}")
         except Exception as e:
@@ -28,15 +28,15 @@ class CAPECInserter:
 
     # Cypher Query to insert CAPEC attack Cypher Script
     def query_capec_attack_script(self, file):
-        capecs_cypher_file = open(self.import_path + "CAPECs_attack.cypher", "r")
+        capecs_cypher_file = open("CypherScripts/" + "CAPECs_attack.cypher", "r")
         query = capecs_cypher_file.read()
 
         query = query.replace('capecAttackFilesToImport', f"'{file}'")
         try:
             with self.driver.session() as session:
                 session.run(query)
-        except exceptions.CypherError as e:
-            print(f"CypherError: {e}")
+        except exceptions.CypherSyntaxError as e:
+            print(f"CypherSyntaxError: {e}")
         except exceptions.DriverError as e:
             print(f"DriverError: {e}")
         except Exception as e:
@@ -48,15 +48,15 @@ class CAPECInserter:
 
     # Cypher Query to insert CAPEC category Cypher Script
     def query_capec_category_script(self, file):
-        capecs_cypher_file = open(self.import_path + "CAPECs_category.cypher", "r")
+        capecs_cypher_file = open("CypherScripts/" + "CAPECs_category.cypher", "r")
         query = capecs_cypher_file.read()
         query = query.replace('capecCategoryFilesToImport', f"'{file}'")
 
         try:
             with self.driver.session() as session:
                 session.run(query)
-        except exceptions.CypherError as e:
-            print(f"CypherError: {e}")
+        except exceptions.CypherSyntaxError as e:
+            print(f"CypherSyntaxError: {e}")
         except exceptions.DriverError as e:
             print(f"DriverError: {e}")
         except Exception as e:
@@ -68,15 +68,15 @@ class CAPECInserter:
 
     # Cypher Query to insert CAPEC view Cypher Script
     def query_capec_view_script(self, file):
-        capecs_cypher_file = open(self.import_path + "CAPECs_view.cypher", "r")
+        capecs_cypher_file = open("CypherScripts/" + "CAPECs_view.cypher", "r")
         query = capecs_cypher_file.read()
         query = query.replace('capecViewFilesToImport', f"'{file}'")
 
         try:
             with self.driver.session() as session:
                 session.run(query)
-        except exceptions.CypherError as e:
-            print(f"CypherError: {e}")
+        except exceptions.CypherSyntaxError as e:
+            print(f"CypherSyntaxError: {e}")
         except exceptions.DriverError as e:
             print(f"DriverError: {e}")
         except Exception as e:
