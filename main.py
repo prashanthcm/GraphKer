@@ -17,8 +17,8 @@ def run(url_db, username, password, directory, neo4jbrowser, graphlytic):
 
         import_path = Util.set_import_path(directory)
 
-        # Util.clear_directory(import_path)
-        # scraper.download_datasets(import_path)
+        Util.clear_directory(import_path)
+        scraper.download_datasets(import_path)
 
         Util.copy_files_cypher_script(import_path)
 
@@ -30,9 +30,9 @@ def run(url_db, username, password, directory, neo4jbrowser, graphlytic):
         capecInserter = CAPECInserter(driver, import_path)
         databaseUtil = DatabaseUtil(driver)
 
-        # databaseUtil.clear()
-        # databaseUtil.schema_script()
-        # cpeInserter.cpe_insertion()
+        databaseUtil.clear()
+        databaseUtil.schema_script()
+        cpeInserter.cpe_insertion()
         capecInserter.capec_insertion()
         cveInserter.cve_insertion()
         cweInserter.cwe_insertion()
